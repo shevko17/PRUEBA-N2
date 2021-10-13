@@ -1,0 +1,225 @@
+<!<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        
+
+        <!--bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+        <link href="css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <script type = "text/javascript" src = 'js/comunas.js'></script>
+
+        <div class="info-container">
+            <h1>Ficha del Estudiante</h1>
+            <h1>María Pérez</h1>
+            <button id="EditarButton" class="btn btn-primary" type="button" style="display:block;" onclick="EditButton()">Editar</button>
+            
+            <div id="info" style="display:block;"> 
+                <h2>RUT: 111111111-1</h2>
+                <h2>Teléfono:111111111-11</h2>
+                <h2>Correo Electrónico: mariaperez@gmail.com</h2>
+                <h2>Acudientes: Ninguno</h2>
+                <h2>Fecha de Nacimiento: 12 May 2016</h2>
+                <h2>Región: Valparaíso</h2>
+                <h2>Comúna: Valparaíso</h2>
+                <h2>Dirección: XXXXXXXXXX,X</h2>
+            </div>
+            <form class="row g-3 needs-validation" id="form"  style="display:none;" novalidate>
+                <ul>
+                    <li>
+                        <label for="rut" class="form-label">RUT</label>
+                        <input type="text" class="form-control" id="rut" placeholder="RUT" pattern="[K0-9]+" required>
+                        <div class="valid-feedback">
+                            El formato de rut está bien
+                        </div>
+                        <div class="invalid-feedback">
+                            El rut no tiene el formato adecuado
+                        </div>
+                    </li>
+                    <li>
+                      <label for="telefono" class="form-label">Teléfono Móvil</label>
+                      <input type="number" class="form-control" id="telefono" placeholder="Telefono" maxlength="9" required>
+                      <div class="valid-feedback">
+                          Numero Correcto
+                      </div>
+                      <div class="invalid-feedback">
+                          El numero telefonico no tiene el formato correcto
+                      </div>
+                    </li>
+                    <li>
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
+                        <div class="valid-feedback">
+                            El formato del mail es correcto
+                        </div>
+                        <div class="invalid-feedback">
+                            El formato del mail es incorrecto
+                        </div>
+                    </li>
+                    <li>
+                      <label for="acudientes" class="form-label">Acudientes</label>
+                      <input type="text" class="form-control" id="acudientes" placeholder="acudientes" required>
+                      <div class="valid-feedback">
+                          El formato es correcto
+                      </div>
+                      <div class="invalid-feedback">
+                          El formato es incorrecto
+                      </div>
+                    </li>
+                    <li>
+                      <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" id="fecha" placeholder="Fecha de Nacimiento" required>
+                      <div class="valid-feedback">
+                          El formato es correcto
+                      </div>
+                      <div class="invalid-feedback">
+                          El formato es incorrecto
+                      </div>
+                    </li>
+                    <div class="form-group">
+                      <label for="region">Región</label>
+                        <select name="region" id="region" data-placeholder="Seleccione Region"
+                        class="form-control chosenRegion" onchange="change('region','comuna')"
+                        value="<%=typeof region != 'undefined' ? region : '' %>">
+                        <option value=""></option>
+                        <option value="Valparaiso">Valparaíso</option>
+                        <option value="Santiago">Santiago</option>
+                      </select>                      
+                    </div>
+                    <div class="form-group">
+                      <label for="comuna">Comuna</label>
+                      <select id="comuna" name="comuna" data-placeholder="Seleccione comuna"
+                      class="form-control chosenComuna" value="<%typeof comuna != 'undefined' ? comuna : '' %>">
+                      <option value=""></option>
+                    </select>
+                    </div>
+                    <li>
+                      <label for="direccion" class="form-label">Dirección</label>
+                      <input type="text" class="form-control" id="direccion" placeholder="Direccion" required>
+                      <div class="valid-feedback">
+                          El formato es correcto
+                      </div>
+                      <div class="invalid-feedback">
+                          El formato es incorrecto
+                      </div>
+                    </li>
+                    
+                    <script>
+                      
+                    </script>
+                    <div class="buttons-container">
+                        <button id="submit" class="btn btn-primary" type="submit">Enviar</button>
+                    </div> 
+                   <script type ="text/javascript">
+                    function EditButton(){
+                      document.getElementById('EditarButton').style.display = 'none';
+                      document.getElementById('form').style.display = 'block';
+                      document.getElementById('info').style.display = 'none';
+                      document.getElementById('form-curso').style.display = 'block';
+                      document.getElementById('mostrar-curso').style.display = 'none';
+                    };               
+                  </script>  
+                  <script type ="text/javascript">
+                  
+                    let informacion={
+                      rut: "111111111-1",
+                      telefono: "11111111111",
+                      correo: "maria.perez@gmail.com",
+                      acudientes: "Ninguno",
+                      fecha: new Date("2016-05-12"),
+                      region: "Valparaiso",
+                      comuna: "Valparaiso",
+                      direccion: "XXXXXXXXX",
+                      curso: "4 primaria"
+                    };
+                    
+                    /*window.onload = function MostrarInfo(){
+                       
+                      document.getElementById("info").innerHTML=informacion;
+                      Solo logre imprimir un dato a la vez y no pude guardarlos todos,
+                      tuve problemas con ts, no se pq no funciona ni el hola mundo con
+                      el console log
+                    }*/
+                  
+                  </script>     
+                </ul>
+            </form>
+          </div>
+          <div class="lado-derecho">        
+          <div class="curso-container">
+            <div id="mostrar-curso" style="display:block;"> <h2>Curso: 4 primaria</h2></div>
+            <form class="row g-3 needs-validation" id="form-curso"  style="display:none;" novalidate>
+            <li>
+              <label for="curso" class="form-label">Curso</label>
+              <input type="text" class="form-control" id="curso" placeholder="Curso" required>
+              <div class="valid-feedback">
+                  El formato es correcto
+              </div>
+              <div class="invalid-feedback">
+                  El formato es incorrecto
+              </div>
+            </li>
+            </form>
+          </div>
+          <div class="asignaturas-container">
+            <div class="plus-container"><button id="MasButton" class="btn btn-primary" type="button" onclick="MasButton()">+</button></div>
+            <!--No se pq no funciona este boton :(-->
+            <div class="fila">
+              <h2>Asignaturas</h2>
+              <h2>Matematicas</h2>
+              <h2>Fisica</h2>
+              <h2>Español</h2>
+            </div>
+            <div class="fila">
+              <h2>Objetivos</h2>
+              <h2>Comprension</h2>
+              <h2>Logica</h2>
+              <h2>Gramatica</h2>
+            </div>
+            <div class="fila">
+              <h2>Nota</h2>
+              <h2>6.0</h2>
+              <h2>7.0</h2>
+              <h2>7.0</h2>
+            </div>
+            
+          </div>
+          <div class="asignatura-form" style="visibility:hidden;">
+            <label for="asignatura" class="form-label"></label>
+            <input type="text" class="form-control" id="asignatura" style="height:40px;width:110px" placeholder="Asignatura" required>
+            <select class="form-select"  style="height:40px;width:110px" aria-label="Default select example">
+              <option selected>Objetivos</option>
+              <option value="1">Comprension</option>
+              <option value="2">Logica</option>
+              <option value="3">Gramatica</option>
+            </select>
+            <label for="nota" class="form-label"></label>
+            <input type="number" class="form-control" id="nota"  style="height:40px;width:80px"  placeholder="Nota" required>
+            <button id="Crear" class="btn btn-primary"  type="button" >Crear</button>
+          </div>
+        </div>
+        <script type ="text/javascript">
+          function MasButton(){
+            document.getElementById('asignatura-form').style.visibility = 'visible';
+        
+          }
+          
+        </script> 
+          <script data-main="js/comunas" src="js/require-jquery.js"></script> 
+        <script data-main="js/inicio" src="js/require-jquery.js"></script>    
+    </body>
+</html>
